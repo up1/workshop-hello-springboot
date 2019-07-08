@@ -1,17 +1,26 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 public class Hello2Controller {
 
+    @Autowired
+    private EmployeeRepository repository;
+
     @GetMapping("/hello/{name}")
     public HelloResponse sayHi(@PathVariable String name) {
-        return new HelloResponse("Hello, " + name);
+        Optional<Employee> employee = repository.findByName(name);
+        if(employee.isPresent()) {
+            return new HelloResponse("Hello, " + name);
+        }
+        return new HelloResponse(name + " not found");
     }
 
 }
