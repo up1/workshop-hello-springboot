@@ -23,4 +23,15 @@ public class Hello2ControllerTest {
                 "/hello/somkiat", HelloResponse.class);
         assertEquals("Hello, somkiat", response.getMessage());
     }
+
+
+    @Test
+    public void sayHi2() {
+        HelloResponse expected = new HelloResponse("Hello, somkiat");
+
+        HelloResponse response = this.restTemplate.getForObject(
+                "/hello/somkiat", HelloResponse.class);
+
+        assertEquals(expected, response);
+    }
 }
