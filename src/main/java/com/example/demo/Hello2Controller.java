@@ -18,7 +18,7 @@ public class Hello2Controller {
     public HelloResponse sayHi(@PathVariable String name) {
         Optional<Employee> employee = repository.findByName(name);
         if(employee.isPresent()) {
-            return new HelloResponse("Hello, " + name);
+            return new HelloResponse("Hello, " + employee.get().getName());
         }
         return new HelloResponse(name + " not found");
     }

@@ -28,11 +28,11 @@ public class Hello2ControllerTest {
     public void sayHi() {
         Employee somkiat = new Employee();
         somkiat.setName("somkiat");
-        given(employeeRepository.findByName("somkiat"))
+        given(employeeRepository.findByName("somkiat1"))
                 .willReturn(Optional.of(somkiat));
 
         HelloResponse response = this.restTemplate.getForObject(
-                "/hello/somkiat", HelloResponse.class);
+                "/hello/somkiat1", HelloResponse.class);
         assertEquals("Hello, somkiat", response.getMessage());
     }
 
