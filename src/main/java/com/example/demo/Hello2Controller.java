@@ -13,9 +13,12 @@ public class Hello2Controller {
     }
 
 }
-
+// POJO object/class or Data class
 class HelloResponse {
     private String message;
+
+    public HelloResponse() {
+    }
 
     public HelloResponse(String message) {
         this.message = message;
